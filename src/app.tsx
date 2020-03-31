@@ -2,7 +2,7 @@ import React from 'react';
 import { DefaultFooter } from '@ant-design/pro-layout';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-import { getInitialInfo } from '@/services/userAndlogin';
+import { getAuth } from '@/services/auth';
 
 //布局相关
 // 页脚
@@ -19,7 +19,7 @@ const footerRender = () => (
 export const layout = {
   layout: 'topmenu',
   logout: () => {}, // do something
-  rightRender: initInfo => {
+  rightRender: () => {
     return 'hahah';
   }, // return string || ReactNode;
   footerRender: footerRender,
@@ -27,6 +27,6 @@ export const layout = {
 
 //初始化数据
 export async function getInitialState() {
-  const { object } = await getInitialInfo();
+  const { object } = await getAuth();
   return object;
 }
